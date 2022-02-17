@@ -11,4 +11,13 @@ describe('#fetchBreedDescription', ()=>{
       done();
     });
   });
+  it('Returns the correct error when an invalid breed is passed in', (done) => {
+    fetchBreedDescription('Husky', (err, desc) => {
+      assert.equal(desc, null);
+      const expectedError = "Breed Name Not Found";
+
+      assert.equal(expectedError, err.trim());
+      done();
+    });
+  });
 });
