@@ -1,7 +1,8 @@
 const request = require('request');
 
 const fetchBreedDescription = (breed, callback) => {
-  request(`https://api.thecatapi.com/v1/images/search?breed_id=${breed}`, (err, response, body) => {
+  const breedFormatted = breed.slice(0, 4).toLowerCase();
+  request(`https://api.thecatapi.com/v1/images/search?breed_id=${breedFormatted}`, (err, response, body) => {
     if (err) {
       return callback(err, null);
     }
